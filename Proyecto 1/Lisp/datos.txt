@@ -1,0 +1,10 @@
+(defun celsiusToFarenheit (celsius) (+ 32 (* celsius (/ 9 5)))) 
+(celsiusToFarenheit 80)
+(setq x 10)
+x
+(setq y 20)
+y
+(cond ((> x y) (+ 5 2)) (t (- 5 2)))
+(list 1 2 3)
+(quote (+ 5 2))
+fin
