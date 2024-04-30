@@ -1,0 +1,41 @@
+/
+
+/
+
+Ejemplo de codigo para Neo4J
+
+Nodos de películas
+CREATE (m1:Movie {movie_id: 1, title: 'Inception', genre: 'Science Fiction', synopsis: 'A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a CEO.', cast: ['Leonardo DiCaprio', 'Joseph Gordon-Levitt', 'Ellen Page'], release_date: '2010-07-16'})
+CREATE (m2:Movie {movie_id: 2, title: 'The Grand Budapest Hotel', genre: 'Comedy', synopsis: 'The adventures of Gustave H, a legendary concierge at a famous European hotel between the wars, and Zero Moustafa, the lobby boy who becomes his most trusted friend.', cast: ['Ralph Fiennes', 'F. Murray Abraham', 'Mathieu Amalric'], release_date: '2014-03-28'})
+CREATE (m3:Movie {movie_id: 3, title: 'Parasite', genre: 'Thriller', synopsis: 'Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.', cast: ['Song Kang-ho', 'Lee Sun-kyun', 'Cho Yeo-jeong'], release_date: '2019-05-30'})
+CREATE (m4:Movie {movie_id: 4, title: 'La La Land', genre: 'Romance', synopsis: 'While navigating their careers in Los Angeles, a pianist and an actress fall in love while attempting to reconcile their aspirations for the future.', cast: ['Ryan Gosling', 'Emma Stone'], release_date: '2016-12-09'})
+
+Nodos de generos:
+CREATE (g1:Genre {name: 'Science Fiction'})
+CREATE (g2:Genre {name: 'Comedy'})
+CREATE (g3:Genre {name: 'Thriller'})
+CREATE (g4:Genre {name: 'Romance'})
+
+Nodos de usuarios
+CREATE (g1:Genre {name: 'Science Fiction'})
+CREATE (g2:Genre {name: 'Comedy'})
+CREATE (g3:Genre {name: 'Thriller'})
+CREATE (g4:Genre {name: 'Romance'})
+
+Relaciones
+
+// Usuarios y películas
+CREATE (u1)-[:LIKES]->(m2)
+CREATE (u1)-[:LIKES]->(m3)
+CREATE (u2)-[:LIKES]->(m1)
+CREATE (u2)-[:LIKES]->(m4)
+
+// Amistad entre usuarios
+CREATE (u1)-[:FRIENDS_WITH]->(u2)
+CREATE (u2)-[:FRIENDS_WITH]->(u1)
+
+// Películas y géneros
+CREATE (m1)-[:BELONGS_TO]->(g1)
+CREATE (m2)-[:BELONGS_TO]->(g2)
+CREATE (m3)-[:BELONGS_TO]->(g3)
+CREATE (m4)-[:BELONGS_TO]->(g4)

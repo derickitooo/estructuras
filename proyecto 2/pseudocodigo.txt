@@ -1,0 +1,28 @@
+INICIO
+  OBTENER usuario_id
+  LEER estado_de_animo, preferencias_de_genero, lista_de_amigos from Usuario
+
+  inicializar lista_de_recomendaciones a vacío
+
+  SI usuario quiere explorar nuevos géneros ENTONCES
+    RECOMENDAR películas de nuevos géneros basadas en alta calificación general
+  SINO
+    RECOMENDAR películas de los géneros preferidos con alta calificación
+
+  PARA cada genero in preferencias_de_genero HACER
+    OBTENER lista_de_peliculas del genero
+    PARA cada pelicula in lista_de_peliculas HACER
+      SI pelicula cumple con estado_de_animo del usuario Y no ha sido vista por el usuario ENTONCES
+        AGREGAR pelicula a lista_de_recomendaciones
+
+  PARA cada amigo in lista_de_amigos HACER
+    LEER peliculas_favoritas from amigo
+    PARA cada pelicula in peliculas_favoritas HACER
+      SI pelicula está en lista_de_recomendaciones ENTONCES
+        AUMENTAR puntuación de recomendación de la película
+      SINO
+        AGREGAR pelicula a lista_de_recomendaciones con puntuación base
+
+  ORDENAR lista_de_recomendaciones por puntuación de recomendación de mayor a menor
+  MOSTRAR las primeras 10 películas de lista_de_recomendaciones
+FIN
